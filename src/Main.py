@@ -37,7 +37,6 @@ while (not pointRead):
 # MEMBACA MATRIKS KETETANGGAAN
 matrix = Matrix(size)
 matrixRead = False
-
 itr = 0
 
 while (itr < size):
@@ -45,10 +44,13 @@ while (itr < size):
         if (i != ' ' and i != '\n'):
          matrix.AddElementToMatrix(int(i))
     itr += 1
+file.close()
 
+#simpulAwal = input(str("Masukkan simpul awal: "))
+#simpulTujuan = input(str("Masukkan simpul tujuan: "))
 print(size)
 print()
 arrayPoint.PrintArray()
 print()
 matrix.PrintMatrix()
-file.close()
+print()

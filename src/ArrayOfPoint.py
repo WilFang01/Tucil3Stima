@@ -39,3 +39,12 @@ class ArrayOfPoint :
         # prosedur ini hanya digunakan untuk testing.
         for point in self.mem:
             print(f"{point.name} ({point.x},{point.y})")
+    
+    def JarakEuclidianKe(self, startName, endName):
+        # fungsi akan mereturn jarak antara 2 titik jika ditarik garis lurus
+        start = self.FindPoint(startName)
+        end = self.FindPoint(endName)
+        return math.sqrt((start.x - end.x)**2 + (start.y - end.y)**2)
+    
+    def LintasanAStarKe(self, name):
+        pass
