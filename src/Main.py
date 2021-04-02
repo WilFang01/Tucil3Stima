@@ -1,11 +1,14 @@
 from ArrayOfPoint import *
 from Matrix import *
 
-file = open("test1.txt", "r")
-size = int(file.readline().split("\n"))
+file = open("test/test1.txt", "r")
+
+# MEMBACA BANYAK POINT PADA GRAF
+size = int(file.readline().split("\n")[0])
 file.readline() # skip blank
 
-pointRead = False
+# MEMBACA DAN MENYIMPAN POINT KEDALAM ARRAY
+pointRead = False # penanda apakah semua point telah dibaca
 arrayPoint = ArrayOfPoint()
 
 while (not pointRead):
@@ -31,7 +34,21 @@ while (not pointRead):
                 section += 1
         arrayPoint.AddPoint(name, int(x),int(y)) # point ditambahkan kedalam array
 
+# MEMBACA MATRIKS KETETANGGAAN
+matrix = Matrix(size)
+matrixRead = False
+
+itr = 0
+
+while (itr < size):
+    for i in file.readline():
+        if (i != ' ' and i != '\n'):
+         matrix.AddElementToMatrix(int(i))
+    itr += 1
+
 print(size)
 print()
 arrayPoint.PrintArray()
+print()
+matrix.PrintMatrix()
 file.close()

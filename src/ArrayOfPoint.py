@@ -38,4 +38,4 @@ class ArrayOfPoint :
         # prosedur untuk mencetak isi array ke layar.
         # prosedur ini hanya digunakan untuk testing.
         for point in self.mem:
-            print(f"{point.name}({point.x}, {point.y})")
+            print(f"{point.name} ({point.x},{point.y})")
