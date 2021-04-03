@@ -2,6 +2,7 @@
 # import matplotlib.pyplot as plt
 from ArrayOfPoint import *
 from Matrix import *
+from Graph import *
 
 file = open("test/test1.txt", "r")
 
@@ -34,7 +35,7 @@ while (not pointRead):
                 y = y + i
             else :
                 section += 1
-        arrayPoint.AddPoint(name, int(x),int(y)) # point ditambahkan kedalam array
+        arrayPoint.AddPoint(name, float(x), float(y)) # point ditambahkan kedalam array
 
 # MEMBACA MATRIKS KETETANGGAAN
 matrix = Matrix(size+1)
@@ -42,9 +43,13 @@ matrixRead = False
 itr = 0
 
 while (itr < size+1):
+    temp = ""
     for i in file.readline():
         if (i != ' ' and i != '\n'):
-         matrix.AddElementToMatrix(i)
+            temp = temp + i
+        else:
+            matrix.AddElementToMatrix(temp)
+            temp = ""
     itr += 1
 file.close()
 
@@ -60,3 +65,4 @@ simpulAwal = input(str("Masukkan simpul awal: "))
 simpulTujuan = input(str("Masukkan simpul tujuan: "))
 print(arrayPoint.DistanceWithAStar(simpulAwal, simpulTujuan, matrix))
 print(arrayPoint.PathWithAStar(simpulAwal, simpulTujuan, matrix))
+printGraph(arrayPoint, arrayPoint.PathWithAStar(simpulAwal, simpulTujuan, matrix))
