@@ -72,7 +72,7 @@ class ArrayOfPoint :
         currentPointName = startName
 
         if (startName == endName):
-            return -1 # error : simpul tujuan tidak dapat didatangi dari simpul asal
+            return 0
         while (currentPointName != endName):
             
             # memasukkan semua tetangga dari point sekarang yang belum pernah dikunjungi kedalam simpulHidup
@@ -111,7 +111,7 @@ class ArrayOfPoint :
         currentPointName = startName
 
         if (startName == endName):
-            return "unreachable" # error : simpul tujuan tidak dapat didatangi dari simpul asal
+            return "You have arrived at your destination"
         while (currentPointName != endName):
             
             # memasukkan semua tetangga dari point sekarang yang belum pernah dikunjungi kedalam simpulHidup
@@ -142,3 +142,21 @@ class ArrayOfPoint :
             
         # simpul hidup ditemukan
         return simpulHidup.mem[0].traveledPath
+
+    def GetMinPoint(self):
+        minPoint = Point("min", self.mem[0].x, self.mem[0].y)
+        for point in self.mem:
+            if (point.x < minPoint.x):
+                minPoint = Point("min", point.x, minPoint.y)
+            if (point.y < minPoint.y):
+                minPoint = Point("min", minPoint.x, point.y)
+        return minPoint
+
+    def GetMaxPoint(self):
+        maxPoint = Point("max",self.mem[0].x, self.mem[0].y)
+        for point in self.mem :
+            if (point.x > maxPoint.x):
+                maxPoint = Point("max",point.x, maxPoint.y)
+            if (point.y > maxPoint.y):
+                maxPoint = Point("max",maxPoint.x, point.y)
+        return maxPoint

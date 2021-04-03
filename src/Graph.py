@@ -12,20 +12,22 @@ def printGraph(arrayPoint, path):
     # convert dari string jadi array tiap titik pada path
     array_path = []
     temp = ""
-    for char in path:
-        if char != " " and char != ">":
-            temp = temp + char
-        else:
-            if temp != "":
-                array_path.append(temp)
-                temp = ""
-    array_path.append(temp)
+    if (path != "You have arrived at your destination"):
+        for char in path:
+            if char != " " and char != ">":
+                temp = temp + char
+            else:
+                if temp != "":
+                    array_path.append(temp)
+                    temp = ""
+        array_path.append(temp)
     
     path_x = []
     path_y = []
-    for namaPoint in array_path:
-        path_x.append(arrayPoint.FindPoint(namaPoint).x)
-        path_y.append(arrayPoint.FindPoint(namaPoint).y)
+    if (array_path != []):
+        for namaPoint in array_path:
+            path_x.append(arrayPoint.FindPoint(namaPoint).x)
+            path_y.append(arrayPoint.FindPoint(namaPoint).y)
         
     fig = go.Figure(go.Scattermapbox(
         mode = "markers+lines",
@@ -39,12 +41,15 @@ def printGraph(arrayPoint, path):
         lat = path_x,
         marker = {'size': 10}))
     
+    maxPoint = arrayPoint.GetMaxPoint()
+    minPoint = arrayPoint.GetMinPoint()
+
     fig.update_layout(
         margin ={'l':0,'t':0,'b':0,'r':0},
         mapbox = {
-            'center': {'lon': 10, 'lat': 10},
+            'center': {'lon': minPoint.y, 'lat': minPoint.x},
             'style': "stamen-terrain",
-            'center': {'lon': -20, 'lat': -20},
-            'zoom': 1})
+            'center': {'lon': maxPoint.y, 'lat': maxPoint.x},
+            'zoom': 16})
 
     fig.show()
