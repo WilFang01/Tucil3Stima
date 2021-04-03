@@ -35,22 +35,26 @@ while (not pointRead):
         arrayPoint.AddPoint(name, int(x),int(y)) # point ditambahkan kedalam array
 
 # MEMBACA MATRIKS KETETANGGAAN
-matrix = Matrix(size)
+matrix = Matrix(size+1)
 matrixRead = False
 itr = 0
 
-while (itr < size):
+while (itr < size+1):
     for i in file.readline():
         if (i != ' ' and i != '\n'):
-         matrix.AddElementToMatrix(int(i))
+         matrix.AddElementToMatrix(i)
     itr += 1
 file.close()
 
-#simpulAwal = input(str("Masukkan simpul awal: "))
-#simpulTujuan = input(str("Masukkan simpul tujuan: "))
 print(size)
 print()
 arrayPoint.PrintArray()
 print()
 matrix.PrintMatrix()
 print()
+
+# MAIN PROGRAM
+simpulAwal = input(str("Masukkan simpul awal: "))
+simpulTujuan = input(str("Masukkan simpul tujuan: "))
+print(arrayPoint.DistanceWithAStar(simpulAwal, simpulTujuan, matrix))
+print(arrayPoint.PathWithAStar(simpulAwal, simpulTujuan, matrix))
