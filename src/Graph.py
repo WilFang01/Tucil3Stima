@@ -5,7 +5,7 @@ def printGraph(arrayPoint, path):
     # memasukan posisi x dan y tiap titik ke masing masing array
     array_y = []
     array_x = []
-    for point in arrayPoint:
+    for point in arrayPoint.mem:
         array_x.append(point.x)
         array_y.append(point.y)
     
@@ -19,16 +19,13 @@ def printGraph(arrayPoint, path):
             if temp != "":
                 array_path.append(temp)
                 temp = ""
+    array_path.append(temp)
+    
     path_x = []
     path_y = []
     for namaPoint in array_path:
         path_x.append(arrayPoint.FindPoint(namaPoint).x)
         path_y.append(arrayPoint.FindPoint(namaPoint).y)
-    
-    print(array_x)
-    print(array_y)
-    print(path_x)
-    print(path_y)
         
     fig = go.Figure(go.Scattermapbox(
         mode = "markers+lines",
