@@ -4,7 +4,7 @@ from ArrayOfPoint import *
 from Matrix import *
 from Graph import *
 
-file = open("test/test1.txt", "r")
+file = open("test/test3.txt", "r")
 
 # MEMBACA BANYAK POINT PADA GRAF
 size = int(file.readline().split("\n")[0])
@@ -53,16 +53,12 @@ while (itr < size+1):
     itr += 1
 file.close()
 
-print(size)
-print()
-arrayPoint.PrintArray()
-print()
-matrix.PrintMatrix()
-print()
-
 # MAIN PROGRAM
+print("Daftar Point:")
+arrayPoint.PrintDaftarNamaPoint()
 simpulAwal = input(str("Masukkan simpul awal: "))
 simpulTujuan = input(str("Masukkan simpul tujuan: "))
-print(arrayPoint.DistanceWithAStar(simpulAwal, simpulTujuan, matrix))
-print(arrayPoint.PathWithAStar(simpulAwal, simpulTujuan, matrix))
-printGraph(arrayPoint, arrayPoint.PathWithAStar(simpulAwal, simpulTujuan, matrix))
+print(f"Jalur Terpendek = {arrayPoint.PathWithAStar(simpulAwal, simpulTujuan, matrix)}")
+print(f"Jarak tempuh = {arrayPoint.DistanceWithAStar(simpulAwal, simpulTujuan, matrix)}")
+print("Otewe tampilin graf...")
+printGraph(arrayPoint, arrayPoint.PathWithAStar(simpulAwal, simpulTujuan, matrix), matrix)

@@ -1,0 +1,22 @@
+9
+
+AsiaAfrikaMonument -6.921194 107.607701
+BaksoCiampelas -6.922569 107.607626
+MoriIceCream -6.922501 107.607097
+ParahyanganPlaza -6.922377 107.606296
+Kepatihan -6.923428 107.606317
+SwarhaBuilding -6.921055 107.606468
+Banceuy -6.919981 107.606586
+CikapundungBarat -6.920243 107.608186
+PojokHepi -6.921274 107.608022
+
+~ AsiaAfrikaMonument BaksoCiampelas MoriIceCream ParahyanganPlaza Kepatihan SwarhaBuilding Banceuy CikapundungBarat PojokHepi
+AsiaAfrikaMonument 0 1 0 0 0 1 0 0 1
+BaksoCiampelas 1 0 1 0 0 0 0 0 0
+MoriIceCream 0 1 0 1 0 0 0 0 0
+ParahyanganPlaza 0 0 1 0 1 0 0 0 0
+Kepatihan 0 0 0 1 0 0 0 0 0
+SwarhaBuilding 1 0 0 0 0 0 1 0 0
+Banceuy 0 0 0 0 0 1 0 1 0
+CikapundungBarat 0 0 0 0 0 0 1 0 1
+PojokHepi 1 0 0 0 0 0 0 1 0

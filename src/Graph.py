@@ -1,7 +1,7 @@
 import plotly.graph_objects as go
 from ArrayOfPoint import *
 
-def printGraph(arrayPoint, path):
+def printGraph(arrayPoint, path, matrix):
     # memasukan posisi x dan y tiap titik ke masing masing array
     array_y = []
     array_x = []
@@ -28,19 +28,42 @@ def printGraph(arrayPoint, path):
         for namaPoint in array_path:
             path_x.append(arrayPoint.FindPoint(namaPoint).x)
             path_y.append(arrayPoint.FindPoint(namaPoint).y)
-        
+
     fig = go.Figure(go.Scattermapbox(
-        mode = "markers+lines",
         lon = array_y,
-        lat = array_x,
-        marker = {'size': 10}))
+        lat = array_x
+        ))
+
+    for i in range(1, matrix.matrix_size):
+        for j in range(1, i):
+            if (matrix.matrix_adj[i][j] == "1"):
+                tetangga_x = []
+                tetangga_y = []
+                tetangga_x.append(arrayPoint.FindPoint(matrix.matrix_adj[0][j]).x)
+                tetangga_y.append(arrayPoint.FindPoint(matrix.matrix_adj[0][j]).y)
+                tetangga_x.append(arrayPoint.FindPoint(matrix.matrix_adj[i][0]).x)
+                tetangga_y.append(arrayPoint.FindPoint(matrix.matrix_adj[i][0]).y)
+                fig.add_trace(go.Scattermapbox(
+                    mode = "markers+lines",
+                    lon = tetangga_y,
+                    lat = tetangga_x,
+                    # mode = 'markers',
+                    # marker = dict(
+                    #     size = 2,
+                    #     color = 'rgb(255,0,0)',
+                    #     line = dict(
+                    #         width = 3,
+                    #         color = 'rgba(68,68,68,0)'
+                    # )    
+                    # ))
+                    marker = {'size': 10, 'color' : 'rgb(0, 255, 0)'}))
 
     fig.add_trace(go.Scattermapbox(
         mode = "markers+lines",
         lon = path_y,
         lat = path_x,
-        marker = {'size': 10}))
-    
+        marker = {'size': 10, 'color' : 'rgb(255, 0, 0)'}))
+
     maxPoint = arrayPoint.GetMaxPoint()
     minPoint = arrayPoint.GetMinPoint()
 

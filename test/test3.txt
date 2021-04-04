@@ -1,0 +1,22 @@
+9
+
+CeuMilin -6.952910 107.651082
+Simpang4CidurianSelatan -6.952314 107.651509
+TokoIbuSri -6.952093 107.651327
+DAVcreative -6.952659 107.652071
+MasjidAbuBakar -6.952926 107.652624
+TokoS-Wana -6.951199 107.651526
+SimpangCidurianSelatan -6.952787 107.651384
+Pangaisbungsu -6.953016 107.652017
+Warkopibusri -6.953353 107.653111
+
+~ CeuMilin Simpang4CidurianSelatan TokoIbuSri DAVcreative MasjidAbuBakar TokoS-Wana SimpangCidurianSelatan Pangaisbungsu Warkopibusri
+CeuMilin 0 1 0 0 0 0 0 0 0
+Simpang4CidurianSelatan 1 0 1 1 0 0 1 0 0
+TokoIbuSri 0 1 0 0 0 1 0 0 0
+DAVcreative 0 1 0 0 1 0 0 0 0
+MasjidAbuBakar 0 0 0 1 0 0 0 0 1
+TokoS-Wana 0 0 1 0 0 0 0 0 0
+SimpangCidurianSelatan 0 1 0 0 0 0 0 1 0
+Pangaisbungsu 0 0 0 0 0 0 1 0 1
+Warkopibusri 0 0 0 0 1 0 0 1 0

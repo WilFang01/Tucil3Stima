@@ -30,3 +30,17 @@ class PrioQueue :
     def RemoveHead(self):
         self.mem.pop(0)
         self.size -= 1
+
+    def FindElmt(self, name):
+        for elmt in self.mem:
+            if elmt.name == name:
+                return elmt
+        return None
+
+    def ExchageElmt(self, pointName, traveledDistance, estimatedDistance, traveledPath):
+        idx = 0
+        for i in range(self.size):
+            if self.mem[i].name == pointName:
+                idx = i
+        self.mem.pop(idx)
+        self.AddElmt(self, pointName, traveledDistance, estimatedDistance, traveledPath)

@@ -122,14 +122,18 @@ class ArrayOfPoint :
                 for visitedPoint in visitedList:
                     if (visitedPoint == pointName):
                         visited = True
+                # g(n) = g(n) + jarak titik sekarang ke titik tetangga ini
+                traveledDistance = simpulHidup.mem[0].traveledDistance + self.EuclidianDistance(currentPointName, pointName)
+                # f(n) = g(n) + jarak euclidian titik tetangga ini ke titik tujuan
+                estimatedDistance = traveledDistance + self.EuclidianDistance(pointName, endName)
+                traveledPath = simpulHidup.mem[0].traveledPath + " > " + pointName
                 if (not visited):
                     visitedList.append(pointName)
-                    # g(n) = g(n) + jarak titik sekarang ke titik tetangga ini
-                    traveledDistance = simpulHidup.mem[0].traveledDistance + self.EuclidianDistance(currentPointName, pointName)
-                    # f(n) = g(n) + jarak euclidian titik tetangga ini ke titik tujuan
-                    estimatedDistance = traveledDistance + self.EuclidianDistance(pointName, endName)
-                    traveledPath = simpulHidup.mem[0].traveledPath + " > " + pointName
                     simpulHidup.AddElmt(pointName, traveledDistance, estimatedDistance, traveledPath)
+                else:
+                    if simpulHidup.FindElmt(pointName) != None:
+                        if estimatedDistance < simpulHidup.FindElmt(pointName).estimatedDistance:
+                            simpulHidup.ExchageElmt(pointName, traveledDistance, estimatedDistance, traveledPath)
 
             # menghapus titik sekarang dari simpul hidup karena sudah selesai dikunjungi
             simpulHidup.RemoveHead()
@@ -160,3 +164,8 @@ class ArrayOfPoint :
             if (point.y > maxPoint.y):
                 maxPoint = Point("max",maxPoint.x, point.y)
         return maxPoint
+
+    def PrintDaftarNamaPoint(self):
+        print("Daftar Nama Point :")
+        for point in self.mem:
+            print(f"- {point.name}")
