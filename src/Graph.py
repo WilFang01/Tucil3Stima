@@ -2,6 +2,8 @@ import plotly.graph_objects as go
 from ArrayOfPoint import *
 
 def printGraph(arrayPoint, path, matrix):
+    # prosedur untuk menampilkan hasil jalur astar dalam bentuk graph di peta dunia ke layar
+
     # memasukan posisi x dan y tiap titik ke masing masing array
     array_y = []
     array_x = []

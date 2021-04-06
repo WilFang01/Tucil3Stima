@@ -49,6 +49,7 @@ class ArrayOfPoint :
         return math.sqrt((start.x - end.x)**2 + (start.y - end.y)**2)
     
     def GetListOfAdjacentPointName(self, pointName, matrix):
+        # fungsi untuk mendapatkan titik tetangga dari titik yang diinput
         i = 0
         ListOfAdjacentPointName = []
         while i < matrix.matrix_size:
@@ -66,81 +67,92 @@ class ArrayOfPoint :
 
 
     def DistanceWithAStar(self, startName, endName, matrix):
+        # fungsi untuk mendapatkan jarak terpendek menggunakan metode astar
+
         simpulHidup = PrioQueue()
+        # memasukkan simpul awal kedalam simpul hidup sebagai titik yang akan diproses pertama
         simpulHidup.AddElmt(startName, 0, self.EuclidianDistance(startName, endName), startName)
-        visitedList = [startName]
+        visitedList = []
         currentPointName = startName
 
         if (startName == endName):
-            return 0
+            return 0 # jarak 0 karena titik asal dan tujuan sama
         while (currentPointName != endName):
-            
-            # memasukkan semua tetangga dari point sekarang yang belum pernah dikunjungi kedalam simpulHidup
+            # Tandai titik sekarang sudah pernah dikunjungi
+            visitedList.append(currentPointName)
             adjacentPointName = self.GetListOfAdjacentPointName(currentPointName, matrix)
+
+            # memasukkan semua tetangga dari point sekarang yang belum pernah dikunjungi kedalam simpulHidup
             for pointName in adjacentPointName:
                 # mengecek apakah point sudah pernah dikunjungi
                 visited = False
                 for visitedPoint in visitedList:
                     if (visitedPoint == pointName):
                         visited = True
-                if (not visited):
-                    visitedList.append(pointName)
+                if (visited == False):
                     # g(n) = g(n) + jarak titik sekarang ke titik tetangga ini
                     traveledDistance = simpulHidup.mem[0].traveledDistance + self.EuclidianDistance(currentPointName, pointName)
                     # f(n) = g(n) + jarak euclidian titik tetangga ini ke titik tujuan
                     estimatedDistance = traveledDistance + self.EuclidianDistance(pointName, endName)
                     traveledPath = simpulHidup.mem[0].traveledPath + " > " + pointName
-                    simpulHidup.AddElmt(pointName, traveledDistance, estimatedDistance, traveledPath)
+                    # dimasukkan kedalam simpul hidup
+                    simpulHidup.AddOrExchageElmt(pointName, traveledDistance, estimatedDistance, traveledPath)
 
             # menghapus titik sekarang dari simpul hidup karena sudah selesai dikunjungi
             simpulHidup.RemoveHead()
 
-            # mengecek apakah simpulHidup sudah kosong
+            # mengecek apakah simpulHidup sudah kosong, jika kosong pencarian rute dihentikan.
             if (simpulHidup.size == 0):
                 return -1 # error : simpul tujuan tidak dapat didatangi dari simpul asal
+            # jika belum kosong, lanjut ke titik selanjutnya
             else:
                 currentPointName = simpulHidup.mem[0].name
             
-        # simpul hidup ditemukan
+        # simpul tujuan ditemukan
         return simpulHidup.mem[0].traveledDistance
 
     def PathWithAStar(self, startName, endName, matrix):
+        # fungsi untuk mendapatkan jalur terpendek menggunakan metode astar
         simpulHidup = PrioQueue()
+        # memasukkan simpul awal kedalam simpul hidup sebagai titik yang akan diproses pertama
         simpulHidup.AddElmt(startName, 0, self.EuclidianDistance(startName, endName), startName)
-        visitedList = [startName]
+        visitedList = []
         currentPointName = startName
 
         if (startName == endName):
-            return "You have arrived at your destination"
+            return "You have arrived at your destination" # sudah sampai karena titik asal dan tujuan sama
         while (currentPointName != endName):
-            
-            # memasukkan semua tetangga dari point sekarang yang belum pernah dikunjungi kedalam simpulHidup
+            # Tandai titik sekarang sudah pernah dikunjungi
+            visitedList.append(currentPointName)
             adjacentPointName = self.GetListOfAdjacentPointName(currentPointName, matrix)
+
+            # memasukkan semua tetangga dari point sekarang yang belum pernah dikunjungi kedalam simpulHidup
             for pointName in adjacentPointName:
                 # mengecek apakah point sudah pernah dikunjungi
                 visited = False
                 for visitedPoint in visitedList:
                     if (visitedPoint == pointName):
                         visited = True
-                # g(n) = g(n) + jarak titik sekarang ke titik tetangga ini
-                traveledDistance = simpulHidup.mem[0].traveledDistance + self.EuclidianDistance(currentPointName, pointName)
-                # f(n) = g(n) + jarak euclidian titik tetangga ini ke titik tujuan
-                estimatedDistance = traveledDistance + self.EuclidianDistance(pointName, endName)
-                traveledPath = simpulHidup.mem[0].traveledPath + " > " + pointName
-                if (not visited):
-                    visitedList.append(pointName)
-                    simpulHidup.AddElmt(pointName, traveledDistance, estimatedDistance, traveledPath)
+                if (visited == False):
+                    # g(n) = g(n) + jarak titik sekarang ke titik tetangga ini
+                    traveledDistance = simpulHidup.mem[0].traveledDistance + self.EuclidianDistance(currentPointName, pointName)
+                    # f(n) = g(n) + jarak euclidian titik tetangga ini ke titik tujuan
+                    estimatedDistance = traveledDistance + self.EuclidianDistance(pointName, endName)
+                    traveledPath = simpulHidup.mem[0].traveledPath + " > " + pointName
+                    # dimasukkan kedalam simpul hidup
+                    simpulHidup.AddOrExchageElmt(pointName, traveledDistance, estimatedDistance, traveledPath)
 
             # menghapus titik sekarang dari simpul hidup karena sudah selesai dikunjungi
             simpulHidup.RemoveHead()
 
-            # mengecek apakah simpulHidup sudah kosong
+            # mengecek apakah simpulHidup sudah kosong, jika kosong pencarian rute dihentikan.
             if (simpulHidup.size == 0):
                 return "unreachable" # error : simpul tujuan tidak dapat didatangi dari simpul asal
+            # jika belum kosong, lanjut ke titik selanjutnya
             else:
                 currentPointName = simpulHidup.mem[0].name
             
-        # simpul hidup ditemukan
+        # simpul tujuan ditemukan
         return simpulHidup.mem[0].traveledPath
 
     def GetMinPoint(self):
