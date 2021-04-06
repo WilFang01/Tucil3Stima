@@ -130,10 +130,6 @@ class ArrayOfPoint :
                 if (not visited):
                     visitedList.append(pointName)
                     simpulHidup.AddElmt(pointName, traveledDistance, estimatedDistance, traveledPath)
-                else:
-                    if simpulHidup.FindElmt(pointName) != None:
-                        if estimatedDistance < simpulHidup.FindElmt(pointName).estimatedDistance:
-                            simpulHidup.ExchageElmt(pointName, traveledDistance, estimatedDistance, traveledPath)
 
             # menghapus titik sekarang dari simpul hidup karena sudah selesai dikunjungi
             simpulHidup.RemoveHead()
@@ -148,6 +144,8 @@ class ArrayOfPoint :
         return simpulHidup.mem[0].traveledPath
 
     def GetMinPoint(self):
+        # fungsi untuk mendapatkan point terkecil.
+        # point terkecil tersusun oleh nilai x terkecil pada semua titik dan nilai y terkecil pada semua titik 
         minPoint = Point("min", self.mem[0].x, self.mem[0].y)
         for point in self.mem:
             if (point.x < minPoint.x):
@@ -157,6 +155,8 @@ class ArrayOfPoint :
         return minPoint
 
     def GetMaxPoint(self):
+        # fungsi untuk mendapatkan point terkecil.
+        # point terkecil tersusun oleh nilai x terbesar pada semua titik dan nilai y terbesar pada semua titik 
         maxPoint = Point("max",self.mem[0].x, self.mem[0].y)
         for point in self.mem :
             if (point.x > maxPoint.x):
@@ -166,6 +166,7 @@ class ArrayOfPoint :
         return maxPoint
 
     def PrintDaftarNamaPoint(self):
+        # prosedur untuk menampilkan semua nama titik yang telah diinput ke layar
         print("Daftar Nama Point :")
         for point in self.mem:
             print(f"- {point.name}")

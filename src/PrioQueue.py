@@ -42,5 +42,6 @@ class PrioQueue :
         for i in range(self.size):
             if self.mem[i].name == pointName:
                 idx = i
-        self.mem.pop(idx)
-        self.AddElmt(self, pointName, traveledDistance, estimatedDistance, traveledPath)
+        if idx != 0:
+            self.mem.pop(idx)
+        self.AddElmt(pointName, traveledDistance, estimatedDistance, traveledPath)
