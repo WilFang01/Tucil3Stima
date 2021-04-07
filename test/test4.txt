@@ -11,12 +11,12 @@ YogyaJunctionMall -6.711295 108.554740
 AsiaMall -6.714991 108.562767
 
 ~ Kartini AlunAlun PasarKanoman PasarBalong StasiunPrujakan BuburAyamMKapi GrageMall YogyaJunctionMall AsiaMall
-Kartini 0 0 0 0 0 0 1 1 0
-AlunAlun 0 0 0 0 0 0 0 1 1
+Kartini 0 1 0 0 0 0 1 1 0
+AlunAlun 1 0 0 0 0 0 0 0 1
 PasarKanoman 0 0 0 1 0 0 0 0 1
 PasarBalong 0 0 1 0 1 0 0 0 0
 StasiunPrujakan 0 0 0 1 0 1 0 0 1
 BuburAyamMKapi 0 0 0 0 1 0 1 1 0
 GrageMall 1 0 0 0 0 1 0 0 0
-YogyaJunctionMall 1 1 0 0 0 1 0 0 0
+YogyaJunctionMall 1 0 0 0 0 1 0 0 0
 AsiaMall 0 1 1 0 1 0 0 0 0

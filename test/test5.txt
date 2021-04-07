@@ -1,0 +1,20 @@
+8
+
+MieRebusWahidin9988 3.587355 98.692509
+PTTricomSakti 3.589493 98.691662
+K3Mart 3.589260 98.691067
+ATMCIMBNIAGA 3.588933 98.690365
+PertigaanThamrin 3.587061 98.691188
+SimpangWahidinKalimantan 3.587225 98.691876
+GGSalon 3.587503 98.693103
+TAUKUAHECI 3.589754 98.692306
+
+~ MieRebusWahidin9988 PTTricomSakti K3Mart ATMCIMBNIAGA PertigaanThamrin SimpangWahidinKalimantan GGSalon TAUKUAHECI
+MieRebusWahidin9988 0 1 0 0 0 1 1 0
+PTTricomSakti 1 0 1 0 0 0 0 1
+K3Mart 0 1 0 1 0 1 0 0
+ATMCIMBNIAGA 0 0 1 0 1 0 0 0
+PertigaanThamrin 0 0 0 1 0 1 0 0
+SimpangWahidinKalimantan 1 0 1 0 1 0 0 0
+GGSalon 1 0 0 0 0 0 0 1
+TAUKUAHECI 0 1 0 0 0 0 1 0

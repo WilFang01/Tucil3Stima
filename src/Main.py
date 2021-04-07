@@ -4,7 +4,7 @@ from ArrayOfPoint import *
 from Matrix import *
 from Graph import *
 
-file = open("test/test1.txt", "r")
+file = open("test/test5.txt", "r")
 
 # MEMBACA BANYAK POINT PADA GRAF
 size = int(file.readline().split("\n")[0])
